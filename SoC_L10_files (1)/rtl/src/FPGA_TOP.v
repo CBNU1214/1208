@@ -123,7 +123,6 @@ module FPGA_TOP #(
         .EXT_HREADYOUT(EXT_HREADYOUT)
     );
 
-
     assign EXT_BE[3]    = (EXT_HSIZE == 3'b010 && EXT_HADDR[1:0] == 2'b00) 
                         || (EXT_HSIZE == 3'b001 && EXT_HADDR[1:0] == 2'b10)
                         || (EXT_HSIZE == 3'b000 && EXT_HADDR[1:0] == 2'b11);
@@ -145,7 +144,7 @@ module FPGA_TOP #(
     PipeReg #(4) FF_EXT_BE (.CLK(cpu_clk_g), .RST(reset_button), .EN(1'b1), .D(EXT_BE), .Q(EXT_BE_FF));
     
     assign LEDS = 4'b1010;
-    
+
     simple_acc u_simple_acc (
         .clk(cpu_clk_g),
         .rst(reset_button),
